@@ -1,0 +1,579 @@
+* {
+    margin: 0; /* define margem */
+    padding: 0; /* define o espaçamento interno */
+}
+html {
+    font-family: system-ui, -apple-system, Helvetica, Arial, sans-serif; /* define a fonte */
+    scroll-behavior: smooth; /* suaviza a rolagem da pagina */
+}
+
+a {
+    color: #fff; /* define a cor do componente */
+    text-decoration: none; /* remove as caracteristicas de textos com ancora no arquivo */
+    transition: 0.3s; /* aplica uma transição no elemento especificado */
+}
+
+a:hover {
+    opacity: 0.7; /* define a opacidade do elemento */
+}
+
+.logo {
+    font-size: 28px; /* define o tamanho da fonte */
+    text-transform: uppercase; /* transforma todo o texto da logo em letra maiúscula */
+    letter-spacing: 4px; /* define o espaçamento de cada letra */
+}
+header {
+    position: fixed; /* O elemento é removido do fluxo normal de documentos e nenhum espaço é criado para o elemento no layout da página. */
+    width: 100%; /* define largura */
+    z-index: 9999; /* define se a div ficara mais acima ou mais a baixo, no eixo z */
+}
+.nav-mobile-menu {
+    display: flex; /* faz os componentes se organizarem automaticamente */
+    justify-content: space-around; /* os itens são distribuidos de forma uniforme dentro da div */
+    align-items: center; /* alinha os itens no centro */
+    font-family: system-ui, -apple-system, Helvetica, Arial, sans-serif; /* define a fonte */
+    background: #24245f; /* muda a cor de fundo */
+    height: 10vh; /* define altura */
+}
+
+.nav-list {
+    list-style: none; /* remove as caracteristicas de estilo da lista */
+    display: flex; /* faz os componentes se organizarem automaticamente */
+}
+
+.nav-list li {
+    letter-spacing: 3px; /* define o espaçamento de cada letra */
+    margin-left: 35px; /* define a margem esqueda */
+}
+
+.mobile-menu {
+    display: none; /* remove a visibilidade do conteudo */
+    cursor: pointer; /* indica que o conteudo tem propriedades de clique */
+}
+
+.mobile-menu div {
+    width: 35px; /* define largura */
+    height: 2px; /* define altura */
+    background: #fff; /* muda a cor de fundo */
+    margin: 10px; /* define margem */
+    transition: 0.5s; /* aplica uma transição no elemento especificado */
+}
+
+
+@media (max-width: 1000px) { /* quando a tela atingir o tamanho maximo definido ele altera as caracteristicas dos componentes para as descritas dentro das chaves */
+    body {
+        overflow-x: hidden; /* determina que o elemento deve ser cortado no eixo x */
+    }
+
+    .nav-list {
+        position: absolute; /* deixa um elemento capaz de ser posicionado pela tela atravez de top, right, left e bottom */
+        top: 8vh; /* define quanto o componente sera posicionado em relação ao topo */
+        right: 0; /* define quanto o componente sera posicionado em relação a direita */
+        width: 50vw; /* define largura */
+        height: 92vh; /* define altura */
+        background: #24245f; /* muda a cor de fundo */
+        flex-direction: column; /* define como os itens flexiveis devem ser colocados na div, no caso em coluna */
+        align-items: center; /* alinha os itens no centro */
+        justify-content: space-around; /* os itens são distribuidos de forma uniforme dentro da div */
+        transform: translateX(100%);  /* reposiciona um elemento no eixo x do plano 2d */
+        transition: transform 0.3s ease-in; /* aplica uma transição no elemento especificado com inicio lento */
+        z-index: 10; /* define se a div ficara mais acima ou mais a baixo, no eixo z */
+    }
+
+    .nav-list li {
+        margin-left: 0; /* define a margem esqueda */
+        opacity: 0; /* define a opacidade do elemento */
+    }
+
+    .mobile-menu {
+        display: block; /* o elemento gera uma caixa de bloco */
+    }
+}
+
+.nav-list.active {
+    transform: translateX(0); /* reposiciona um elemento no eixo x do plano 2d */
+}
+
+@keyframes navLinkFade {
+    from {
+        opacity: 0; /* define a opacidade do elemento */
+        transform: translateX(50px);  /* reposiciona um elemento no eixo x do plano 2d */
+    }
+
+    to {
+        opacity: 1; /* define a opacidade do elemento */
+        transform: translateX(0);  /* reposiciona um elemento no eixo x do plano 2d */
+    }
+}
+
+.mobile-menu.active .line1 {
+    transform: rotate(-45deg) translate(-8px, 8px);  /* animação do x no menu no formato mobile */
+}
+
+.mobile-menu.active .line2 {
+    opacity: 0; /* define a opacidade do elemento */
+}
+
+.mobile-menu.active .line3 {
+    transform: rotate(45deg) translate(-5px, -7px); /* animação do x no menu no formato mobile */
+}
+
+
+/* ---------------------------------------- CARDS ---------------------------------------- */
+
+
+.cards_config {
+    display: flex; /* faz os componentes se organizarem automaticamente */
+    justify-content: center; /* justifica o conteudo no centro da div */
+    align-items: center; /* alinha os itens no centro */
+    min-height: 100vh; /* determina a altura minima do elemento */
+    background: #F2F2F2; /* muda a cor de fundo */
+}
+.container {
+    position: relative; /* posição pode ser definida com top, right, left ou bottom */
+    display: flex; /* faz os componentes se organizarem automaticamente */
+    justify-content: center; /* justifica o conteudo no centro da div */
+    align-items: center; /* alinha os itens no centro */
+    max-width: 1200px; /* largura maxima de 1200 pixeis */
+    flex-wrap: wrap; /* força os componentes a se organizarem em linha e o valor wrap faz uma quebra de linha caso o limite da largura seja atingido */
+    overflow-block:unset; /* define o que mostra quando o conteúdo transborda nas bordas de início e fim de bloco de uma caixa */
+    z-index: 1; /* define se a div ficara mais acima ou mais a baixo, no eixo z */
+    transform-style: preserve-3d; /* posiciona os elementos no espaço 3d */
+    transform: translate3d(0,0,75px); /* posiciona o elemento no espaço 3d */
+    
+}
+
+.container .card {
+    position: relative; /* posição pode ser definida com top, right, left ou bottom */
+    width: 280px; /* define largura */
+    height: 450px; /* define altura */
+    margin: 30px; /* define margem */
+    background: #536872; /* muda a cor do fundo */
+    border-radius: 10px; /* coloca bordas arredondadas com o raio definido em pixeis */
+    box-shadow: 20px 20px 50px rgb(0, 0, 0, 00.5); /* coloca uma sombra aos lados da box */
+    display: flex; /* faz os componentes se organizarem automaticamente */
+    justify-content: center; /* justifica o conteudo no centro da div */
+    align-items: center; /* alinha os itens no centro */
+    border-top: 1px solid #24245f; /* define as caracteristicas da borda do topo da div */
+    border-left: 1px solid #24245f; /* define as caracteristicas da borda da esquerda da div */
+    transform-style: preserve-3d; /* posiciona os elementos no espaço 3d */
+    transform: translate3d(0,0,75px); /* posiciona o elemento no espaço 3d */
+}
+
+.container .card .content {
+    padding: 20px; /* define o espaçamento interno */
+    text-align: center; /* define o alinhamento do texto */
+    transform-style: preserve-3d; /* posiciona os elementos no espaço 3d */
+    transform: translate3d(0,0,75px); /* posiciona o elemento no espaço 3d */
+    transform: translateY(100px); /* reposiciona um elemento no eixo y do plano 2d */
+    opacity: 0; /* define a opacidade do elemento */
+}
+
+.container .card:hover .content{ /* a função hover serve para alterar as caracteristicas de um elemento se o mouse estiver sobre o mesmo */
+    opacity: 1; /* define a opacidade do elemento */
+}
+
+.container .card img{
+    position: absolute; /* deixa um elemento capaz de ser posicionado pela tela atravez de top, right, left e bottom */
+    top: 50px; /* define quanto o componente sera posicionado em relação ao topo */
+    right: 60px; /* define quanto o componente sera posicionado em relação a direita */
+    pointer-events: none; /* usado quando o componente não tem eventos com o mouse */
+    object-fit: cover; /* o conteudo selecionado mantem sua proporção, mas se adapta ao espaço definido */
+    height: 150px; /* define altura */
+    width: 150px; /* define largura */
+    border: solid 3px #24245f; /* define uma borda para o componente */
+    border-radius: 15px; /* coloca bordas arredondadas com o raio definido em pixeis */
+}
+
+.container .card .content h3 {
+    font-size: 1.8em; /* define o tamanho da fonte */
+    color: #24245f; /* define a cor do componente */
+    z-index: 1; /* define se a div ficara mais acima ou mais a baixo, no eixo z */
+    transform-style: preserve-3d; /* posiciona os elementos no espaço 3d */
+    transform: translate3d(0,0,75px); /* posiciona o elemento no espaço 3d */
+}
+
+.container .card .content p{
+    font-size: 1em; /* define o tamanho da fonte */
+    color: #24245f; /* define a cor do componente */
+    font-weight: 300; /* define o peso da fonte */
+    transform-style: preserve-3d; /* posiciona os elementos no espaço 3d */
+    transform: translate3d(0,0,75px); /* posiciona o elemento no espaço 3d */
+}
+
+.container .card .content a {
+    position: relative; /* posição pode ser definida com top, right, left ou bottom */
+    display: inline-block; /* deixa o conteudo em um bloco que altera a posição conforme o tamanho da tela é alterado */
+    padding: 8px 20px; /* define o espaçamento interno */
+    margin-top: 15px; /* define a margem superior */
+    background: #24245f; /* muda a cor de fundo */
+    border-radius: 20px; /* coloca bordas arredondadas com o raio definido em pixeis */
+    box-shadow: 2px 2px 5px rgb(0, 0, 0, 00.5); /* coloca uma sombra aos lados da box */
+    font-weight: 500; /* define o peso da fonte */
+    transform-style: preserve-3d; /* posiciona os elementos no espaço 3d */
+    transform: translate3d(0,0,75px); /* posiciona o elemento no espaço 3d */
+}
+@media (max-width: 1000px) { /* quando a tela atingir o tamanho maximo definido ele altera as caracteristicas dos componentes para as descritas dentro das chaves */
+    .cards_config {
+        min-height: 170vh; /* define a altura minima */
+    }
+}
+
+/* ---------------------------------------- CONTEUDO ---------------------------------------- */
+
+.produtos_01 {
+    display: flex; /* faz os componentes se organizarem automaticamente */
+    background: #536872; /* muda a cor de fundo */
+    height: 470px; /* define altura */
+    color: white; /* define a cor do componente */
+    font-size: 22px; /* define o tamanho da fonte */
+}
+
+.img {
+    padding: 20px; /* define o espaçamento interno */
+    margin-top: 100px; /* define a margem superior */
+}
+
+.img_direita {
+    margin-right: 100px; /* define a margem direita */
+}
+.paragrafo {
+    font-family: Raleway, sans-serif; /* define a fonte */
+    padding: 20px; /* define o espaçamento interno */
+    justify-content: center; /* justifica o conteudo no centro da div */
+    margin-top: 100px; /* define a margem superior */
+}
+.produtos_01 p {
+    margin-left: 100px; /* define a margem esqueda */
+    font-family: 'Oswald'; /* define a fonte */
+    overflow: auto; /* determina que o elemento deve ser cortado ou exibido com barras de rolagem, no caso de forma automatica para cada navegador */
+}
+
+.produtos_02 {
+    background: #F2F2F2; /* muda a cor de fundo */
+    display: flex; /* faz os componentes se organizarem automaticamente */
+    height: 470px; /* define altura */
+    color: #24245f; /* define a cor do componente */
+    font-size: 22px; /* define o tamanho da fonte */
+    overflow: auto; /* determina que o elemento deve ser cortado ou exibido com barras de rolagem, no caso de forma automatica para cada navegador */
+}
+
+.img_esquerda {
+    margin-left: 100px; /* define a margem esqueda */
+}
+
+.produtos_02 p {
+    margin-right: 100px; /* define a margem direita */
+    font-family: 'Oswald'; /* define a fonte */
+}
+
+.img_conteudo{
+    border: 2px solid #24245f; /* define uma borda para o componente */
+    border-radius: 5px; /* coloca bordas arredondadas com o raio definido em pixeis */
+    object-fit: cover; /* o conteudo selecionado mantem sua proporção, mas se adapta ao espaço definido */
+} 
+.img_conteudo:hover {
+    transform: scale(1.1); /* altera o tamanho dos componentes conforme a escala solicitada */
+    transition: all 0.3s; /* aplica uma transição a todos os elementos especificados */
+}
+@media (max-width: 1000px){ /* quando a tela atingir o tamanho maximo definido ele altera as caracteristicas dos componentes para as descritas dentro das chaves */
+    img {
+        height: 150px; /* define altura */
+        width: 150px; /* define largura */
+        object-fit: cover; /* o conteudo selecionado mantem sua proporção, mas se adapta ao espaço definido */
+    }
+    .paragrafo {
+        font-size: 12px; /* define o tamanho da fonte */
+        text-align: justify; /* define o alinhamento do texto */
+    }
+    .produtos_01 p {
+        overflow: auto; /* determina que o elemento deve ser cortado ou exibido com barras de rolagem, no caso de forma automatica para cada navegador */
+        display: flex; /* faz os componentes se organizarem automaticamente */
+        margin-left: 10px; /* define a margem esqueda */
+        margin-top: 20px; /* define a margem superior */
+    }
+    .produtos_02 p {
+        overflow: auto; /* determina que o elemento deve ser cortado ou exibido com barras de rolagem, no caso de forma automatica para cada navegador */
+        display: flex; /* faz os componentes se organizarem automaticamente */
+        margin-right: 10px; /* define a margem direita */
+        margin-top: 20px; /* define a margem superior */
+    }
+    .img_direita {
+        margin-right: 10px; /* define a margem direita */
+        margin-top: 20px; /* define a margem superior */
+    }
+    .img_esquerda {
+        margin-left: 10px; /* define a margem esqueda */
+        margin-top: 20px; /* define a margem superior */
+    }
+
+}
+
+/* ---------------------------------------- SOBRE ---------------------------------------- */
+.sobre {
+    display: flex; /* faz os componentes se organizarem automaticamente */
+    background: #536872; /* muda a cor de fundo */
+    height: 470px; /* define altura */
+    width: 100%; /* define largura */
+    align-items: center; /* alinha os itens no centro */
+    overflow: auto; /* determina que o elemento deve ser cortado ou exibido com barras de rolagem, no caso de forma automatica para cada navegador */
+    
+}
+/* ---------------------------------------- CARDS-SOBRE ---------------------------------------- */
+.slide_container{
+    margin-right: 25px; /* define a margem direita */
+    margin-left: 25px; /* define a margem esqueda */
+    display: flex; /* faz os componentes se organizarem automaticamente */
+    transition: transform 0.5s ease-in-out; /* aplica uma transição no elemento especificado com inicio e fim lento */
+    width: 325px; /* define largura */
+    transform: translateX(0); /* reposiciona um elemento no eixo x do plano 2d */
+}
+.sobre .slide_card .card_img {
+    height: 120px; /* define altura */
+    width: 120px; /* define largura */
+    border-radius: 50%; /* coloca bordas arredondadas com o raio definido em pixeis */
+    padding: 3px; /* define o espaçamento interno */
+    background: #24245f; /* muda a cor de fundo */
+}
+.sobre .slide_card .card_img img{
+    height: 120px; /* define altura */
+    width: 120px; /* define largura */
+    object-fit: cover; /* o conteudo selecionado mantem sua proporção, mas se adapta ao espaço definido */
+    border-radius: 50%; /* coloca bordas arredondadas com o raio definido em pixeis */
+}
+.slide_card {
+    position: relative; /* posição pode ser definida com top, right, left ou bottom */
+    background: white; /* muda a cor de fundo */
+    margin: 20px 0; /* define margem */
+    object-fit: cover; /* o conteudo selecionado mantem sua proporção, mas se adapta ao espaço definido */
+    width: 350px; /* define largura */
+    height: 400px; /* define altura */
+
+}
+.slide_card::before {
+    content: "";
+    position: absolute; /* deixa um elemento capaz de ser posicionado pela tela atravez de top, right, left e bottom */
+    height: 30%; /* define altura */
+    width: 100%; /* define largura */
+    background: #24245f; /* muda a cor de fundo */
+}
+.slide_card .slide_card_content {
+    display: flex; /* faz os componentes se organizarem automaticamente */
+    flex-direction: column; /* define como os itens flexiveis devem ser colocados na div, no caso em coluna */
+    align-items: center; /* alinha os itens no centro */
+    padding: 30px; /* define o espaçamento interno */
+    position: relative; /* posição pode ser definida com top, right, left ou bottom */
+    z-index: 100; /* define se a div ficara mais acima ou mais a baixo, no eixo z */
+}
+.slide_card .icones {
+    position: absolute; /* deixa um elemento capaz de ser posicionado pela tela atravez de top, right, left e bottom */
+    top: 10px; /* define quanto o componente sera posicionado em relação ao topo */
+    right: 20px; /* define quanto o componente sera posicionado em relação a direita */
+    display: flex; /* faz os componentes se organizarem automaticamente */
+    flex-direction: column; /* define como os itens flexiveis devem ser colocados na div, no caso em coluna */
+    align-items: center; /* alinha os itens no centro */
+}
+.slide_card .icones i{
+    margin-top: 10px; /* define a margem superior */
+    color: white; /* define a cor do componente */
+    opacity: 0.6; /* define a opacidade do elemento */
+    transition: all 0.3 ease; /* aplica uma transição a todos os elementos especificados com inicio e fim lento */
+    cursor: pointer; /* indica que o conteudo tem propriedades de clique */
+} 
+.slide_card .icones i:hover {
+    opacity: 1; /* define a opacidade do elemento */
+}
+.slide_card .info {
+    display: flex; /* faz os componentes se organizarem automaticamente */
+    flex-direction: column; /* define como os itens flexiveis devem ser colocados na div, no caso em coluna */
+    align-items: center; /* alinha os itens no centro */
+    margin-top: 50px; /* define a margem superior */
+    color: #24245f; /* define a cor do componente */
+}
+.info .nome {
+    font-size: 22px; /* define o tamanho da fonte */
+    font-weight: 600; /* define o peso da fonte */
+}
+.info .profissao {
+    font-size: 20px; /* define o tamanho da fonte */
+    font-weight: 500; /* define o peso da fonte */
+    color: #24245f; /* define a cor do componente */
+}
+.slide_card .botao {
+    display: flex; /* faz os componentes se organizarem automaticamente */
+    justify-content: center; /* justifica o conteudo no centro da div */
+    width: 100%; /* define largura */
+    margin-top: 20px; /* define a margem superior */
+}
+.slide_card .botao button{
+    background: #24245f; /* muda a cor de fundo */
+    outline: none;
+    border: none; /* define uma borda para o componente */
+    color: white; /* define a cor do componente */
+    padding: 8px 22px; /* define o espaçamento interno */
+    border-radius: 10px; /* coloca bordas arredondadas com o raio definido em pixeis */
+    font-size: 14px; /* define o tamanho da fonte */
+    cursor: pointer; /* indica que o conteudo tem propriedades de clique */
+}
+.botao button:hover {
+    background: #121231; /* muda a cor de fundo */
+    transform: scale(1.1); /* altera o tamanho dos componentes conforme a escala solicitada */
+    transition: 0.3s; /* aplica uma transição no elemento especificado */
+}
+@media (max-width: 1000px) { /* quando a tela atingir o tamanho maximo definido ele altera as caracteristicas dos componentes para as descritas dentro das chaves */
+    .sobre {
+        overflow: auto; /* determina que o elemento deve ser cortado ou exibido com barras de rolagem, no caso de forma automatica para cada navegador */
+    }
+    .slide_container {
+        transform: scale(0.8); /* altera o tamanho dos componentes conforme a escala solicitada */
+    }
+}
+/* ---------------------------------------- CONTATO ---------------------------------------- */
+.contato {
+    height: 470px; /* define altura */
+    width: 100%; /* define largura */
+    background: #F2F2F2; /* muda a cor de fundo */
+    display: flex; /* faz os componentes se organizarem automaticamente */
+}
+.input_nome {
+    padding: 20px; /* define o espaçamento interno */
+    font-size: 25px; /* define o tamanho da fonte */
+    font-weight: 500; /* define o peso da fonte */
+    margin-left: 20px; /* define a margem esqueda */
+}
+#nome {
+    display: block; /* o elemento gera uma caixa de bloco */
+    padding: 10px; /* define o espaçamento interno */
+    font-size: 16px; /* define o tamanho da fonte */
+    width: 50%; /* define largura */
+}
+.input_email {
+    padding: 20px; /* define o espaçamento interno */
+    font-size: 25px; /* define o tamanho da fonte */
+    font-weight: 500; /* define o peso da fonte */
+    margin-left: 20px; /* define a margem esqueda */
+}
+#email {
+    display: block; /* o elemento gera uma caixa de bloco */
+    padding: 10px; /* define o espaçamento interno */
+    font-size: 16px; /* define o tamanho da fonte */
+    width: 50%; /* define largura */
+}
+.input_mensagem {
+    padding: 20px; /* define o espaçamento interno */
+    font-size: 25px; /* define o tamanho da fonte */
+    font-weight: 500; /* define o peso da fonte */
+    margin-left: 20px; /* define a margem esqueda */
+}
+#mensagem {
+    display: block; /* o elemento gera uma caixa de bloco */
+    padding: 10px; /* define o espaçamento interno */
+    font-size: 16px; /* define o tamanho da fonte */
+    width: 50%; /* define largura */
+}
+.botao_envia {
+    padding: 10px; /* define o espaçamento interno */
+    font-size: 20px; /* define o tamanho da fonte */
+    margin-left: 40px; /* define a margem esqueda */
+    background: #24245f; /* muda a cor de fundo */
+    color: white; /* define a cor do componente */
+    border: 1px solid #24245f; /* define uma borda para o componente */
+    cursor: pointer; /* indica que o conteudo tem propriedades de clique */
+}
+.botao_envia:hover {
+    background: #121231; /* muda a cor de fundo */
+}
+.inputs {
+    display: flexbox; /* faz os componentes se organizarem automaticamente */
+    height: 50%; /* define altura */
+    width: 60%; /* define largura */
+}
+.img {
+    object-fit: cover; /* o conteudo selecionado mantem sua proporção, mas se adapta ao espaço definido */
+}
+@media (max-width: 1000px){ /* quando a tela atingir o tamanho maximo definido ele altera as caracteristicas dos componentes para as descritas dentro das chaves */
+    #nome {
+        width: 70%; /* define largura */
+    }
+    #email {
+        width: 70%; /* define largura */
+    }
+    #mensagem {
+        width: 70%; /* define largura */
+    }
+    .inputs {
+        width: 100%; /* define largura */
+    }
+    .contato .img {
+        display: none; /* remove a visibilidade do conteudo */
+    }
+}
+
+/* ---------------------------------------- FOOTER ---------------------------------------- */
+
+footer {
+    height: 300px; /* define altura */
+    width: 100%; /* define largura */
+    background:#24245f; /* muda a cor de fundo */
+    color: white; /* define a cor do componente */
+    text-align: center; /* define o alinhamento do texto */
+    display: block; /* o elemento gera uma caixa de bloco */
+}
+footer h2{
+    padding: 80px; /* define o espaçamento interno */
+    display: flex; /* faz os componentes se organizarem automaticamente */
+    justify-content: space-around; /* os itens são distribuidos de forma uniforme dentro da div */
+    align-items: center; /* alinha os itens no centro */
+}
+.links {
+    display: flex; /* faz os componentes se organizarem automaticamente */
+    list-style: none; /* remove as caracteristicas de estilo da lista */
+    text-align: center; /* define o alinhamento do texto */
+    justify-content: center; /* justifica o conteudo no centro da div */
+}
+.links li {
+    letter-spacing: 3px; /* define o espaçamento de cada letra */
+    margin-left: 35px; /* define a margem esqueda */
+}
+@media (max-width: 1000px) { /* quando a tela atingir o tamanho maximo definido ele altera as caracteristicas dos componentes para as descritas dentro das chaves */
+    footer {
+        height: 200px; /* define altura */
+    }
+    footer h2 {
+        padding: 40px; /* define o espaçamento interno */
+    }
+    .links{
+        display: flex; /* faz os componentes se organizarem automaticamente */
+        justify-content: center; /* justifica o conteudo no centro da div */
+    }
+    .links li {
+        letter-spacing: 1px; /* define o espaçamento de cada letra */
+        margin-left: 15px; /* define a margem esqueda */ 
+    }
+}
+
+/* ---------------------------------------- FOOTER ---------------------------------------- */
+
+/* ---------------------------------------- PAGINA01 ---------------------------------------- */
+
+.info_pg {
+    min-height: 160vh; /* define a altura minima */
+    padding: 20px; /* define o espaçamento interno */
+    align-items: center; /* alinha os itens no centro */
+    font-family: 'Oswald'; /* define a fonte */
+    overflow: auto; /* determina que o elemento deve ser cortado ou exibido com barras de rolagem, no caso de forma automatica para cada navegador */
+    margin-bottom: 20px; /* define margem inferior */
+    overflow: auto; /* determina que o elemento deve ser cortado ou exibido com barras de rolagem, no caso de forma automatica para cada navegador */
+} 
+.info_pg h2 {
+    margin-top: 70px; /* define margem superior */
+    display: flexbox; /* faz os componentes se organizarem automaticamente */
+    font-size: 35px; /* define o tamanho da fonte */
+}
+.separacao {
+    margin: 0; /* define margem */
+    font-size: 22px; /* define o tamanho da fonte */
+    display: flexbox; /* faz os componentes se organizarem automaticamente */
+    font-family: 'Oswald'; /* define a fonte */
+    padding: 30px; /* define o espaçamento interno */
+}
